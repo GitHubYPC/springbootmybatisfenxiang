@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<a href="/loadInsert">添加</a>
+<table>
+    <tbody>
+    <tr>
+        <td>编号</td>
+        <td>姓名</td>
+        <td>操作</td>
+    </tr>
+    <tr th:each="stu:${list}">
+        <td th:text="${stu.id}">编号</td>
+        <td th:text="${stu.name}">姓名</td>
+        <td><a th:href="@{/findById(id=${stu.id})}">修改</a><a th:href="@{/delete(id=${stu.id})}">删除</a></td>
+    </tr>
+    </tbody>
+</table>
+<button th:switch="${pageNum}">
+    <span th:case="*"><a th:href="@{/findAll(pageNum=1)}">首页</a></span>
+</button>
+<button th:switch="${pageNum}">
+    <span th:case="1"><a th:href="@{/findAll(pageNum=1)}">上一页</a></span>
+    <span th:case="*"><a th:href="@{/findAll(pageNum=${pageNum}-1)}">上一页</a></span>
+</button>
+<button th:switch="${pageNum}">
+    <span th:case="${pages}"><a th:href="@{/findAll(pageNum=${pages})}">下一页</a></span>
+    <span th:case="*"><a th:href="@{/findAll(pageNum=${pageNum}+1)}">下一页</a></span>
+</button>
+<button th:switch="${pageNum}">
+    <span th:case="*"><a th:href="@{/findAll(pageNum=${pages})}">末页</a></span>
+</button>
+</body>
+</html>

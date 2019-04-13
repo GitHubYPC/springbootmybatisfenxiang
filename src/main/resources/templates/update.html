@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<form action="/update" method="post">
+<table>
+    <tbody>
+    <tr>
+        <td>编号</td>
+        <td><input name="id" th:readonly="readonly" th:value="${stu.id}"/></td>
+    </tr>
+    <tr>
+        <td>姓名</td>
+        <td><input name="name" th:value="${stu.name}"/></td>
+    </tr>
+    <tr>
+        <td><input name="grade" th:value="0" style="display: none"/></td>
+    </tr>
+    </tbody>
+</table>
+    <button type="submit">提交</button>
+</form>
+</body>
+</html>
