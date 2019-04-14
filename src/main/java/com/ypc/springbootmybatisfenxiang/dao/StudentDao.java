@@ -13,16 +13,17 @@ import java.util.List;
 @Mapper
 @Repository
 public interface StudentDao {
-    @Select("select stuid,stuname from student")
+    @Select("select stuid,stuname,graid from student")
     @Results(id = "stu",value = {
             @Result(property = "id",column = "stuid"),
-            @Result(property = "name",column = "stuname")
+            @Result(property = "name",column = "stuname"),
+            @Result(property = "grade",one = @One(select = "com.ypc.springbootmybatisfenxiang.dao.GradeDao.findById"),column = "graid")
     })
     public List<Student> findAll();
-    @Select("select stuid,stuname from student where stuid=#{id}")
+    @Select("select stuid,stuname,graid from student where stuid=#{id}")
     @ResultMap(value = "stu")
     public Student findById(int id);
-    @Insert("insert into student(stuname,grade_id) values(#{name},0)")
+    @Insert("insert into student(stuname,graid) values(#{name},1)")
     public int insert(Student stu);
     @Update("update student set stuname=#{name} where stuid=#{id}")
     public int update(Student stu);

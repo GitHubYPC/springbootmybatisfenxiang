@@ -12,11 +12,13 @@
     <tr>
         <td>编号</td>
         <td>姓名</td>
+        <td>班级</td>
         <td>操作</td>
     </tr>
     <tr th:each="stu:${list}">
         <td th:text="${stu.id}">编号</td>
         <td th:text="${stu.name}">姓名</td>
+        <td th:text="${stu.grade.name}">姓名</td>
         <td><a th:href="@{/findById(id=${stu.id})}">修改</a><a th:href="@{/delete(id=${stu.id})}">删除</a></td>
     </tr>
     </tbody>

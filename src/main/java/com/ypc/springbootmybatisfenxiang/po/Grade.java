@@ -4,11 +4,10 @@ import lombok.Data;
 
 /**
  * @author YPC
- * @create 2019 04 13 15:06
+ * @create 2019 04 14 16:12
  */
 @Data
-public class Student {
+public class Grade {
     private int id;
     private String name;
-    private Grade grade;
 }
